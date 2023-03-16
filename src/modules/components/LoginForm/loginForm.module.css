@@ -1,0 +1,92 @@
+.container{
+    padding: 10px;
+    background-color: #ffffff;
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 5px 5px 5px #8187ff;
+    border-radius: 10px;
+}
+
+.header{
+    margin: auto;
+}
+
+.responseMessage{
+    text-align: center;
+    font-weight: 500;
+    margin: 5px 0;
+}
+
+.form .formGroup{
+    margin: auto;
+}
+
+.form .formGroup .input{
+    display: block;
+    width: 90%;
+    padding: 5px 10px;
+    margin: 10px auto;
+    outline: none;
+    border: none;
+    background-color: #e3e3e3;
+    border-radius: 3px;
+    transition: 0.3s;
+}
+
+.form .formGroup .input:hover{
+    background-color: #636afa;
+    color: #fff;
+}
+
+.form .formGroup .input:hover::placeholder{
+    color: #fff;
+}
+
+.button{
+    cursor: pointer;
+    display: block;
+    margin: 15px auto;
+    padding: 5px 15px;
+    font-weight: 500;
+    border: none;
+    background-color: #636afa;
+    color: #fff;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.button:hover{
+    background-color: #3c45f8;
+}
+
+.error{
+    padding: 0 20px ;
+    display: block;
+    font-size: 12px;
+    color: #3c45f8;
+    text-align: right;
+    font-weight: 500;
+}
+
+.error::before{
+    content: "*";
+    color: #3c45f8;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.ops{
+    color: #f83c3c;
+}
+
+.success{
+    color: #3ff83c;
+}
+
+@media screen and (max-width: 768px) {
+    .container{
+        width: 90%;
+    }
+}

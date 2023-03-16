@@ -1,0 +1,8 @@
+.container{
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(129,135,255);
+background: radial-gradient(circle, rgba(129,135,255,1) 0%, rgba(255,255,255,1) 72%, rgba(255,255,255,1) 100%);
+}
