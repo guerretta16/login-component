@@ -3,14 +3,14 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { LoginInfo } from "../../../interfaces/types";
 import useUserStore from "../../../hooks/UserStoreHook";
 import styles from "./loginForm.module.css";
-import logo from '../../../assets/img/logo.png';
+import logo from "../../../assets/img/logo.png";
 
 const LoginForm = () => {
   const {
     register,
-    formState: { errors, isSubmitSuccessful},
+    formState: { errors, isSubmitSuccessful },
     handleSubmit,
-    reset
+    reset,
   } = useForm<LoginInfo>();
   const { authLogin, loginData, error } = useUserStore();
 
@@ -18,20 +18,25 @@ const LoginForm = () => {
 
   React.useEffect(() => {
     reset({
-        email: "",
-        password: ""
-    })
-  }, [isSubmitSuccessful, reset])
+      email: "",
+      password: "",
+    });
+  }, [isSubmitSuccessful, reset]);
 
   return (
     <div className={styles.container}>
-        <div className={styles.header}>
-            <img src={logo} alt="login"/>
-        </div>
+      <div className={styles.header}>
+        <img src={logo} alt="login" />
+      </div>
       <div className={styles.responseMessage}>
         {error && loginData.message ? (
           <span className={styles.ops}>Ops!, {loginData.message}</span>
-        ) : !error && loginData.token && <span className={styles.success}>You're Logged</span>}
+        ) : (
+          !error &&
+          loginData.token && (
+            <span className={styles.success}>You're Logged</span>
+          )
+        )}
       </div>
       <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.formGroup}>
@@ -39,9 +44,17 @@ const LoginForm = () => {
             className={styles.input}
             type="text"
             placeholder="Email"
-            {...register("email", { required: true })}
+            {...register("email", {
+              required: true,
+              pattern: {
+                value: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/,
+                message: "error message",
+              },
+            })}
           />
-          {errors.email && <span className={styles.error}>Email is required</span>}
+          {errors.email && (
+            <span className={styles.error}>Email is required</span>
+          )}
         </div>
         <div className={styles.formGroup}>
           <input
@@ -50,10 +63,12 @@ const LoginForm = () => {
             placeholder="Password"
             {...register("password", { required: true })}
           />
-          {errors.password && <span className={styles.error}>Password is required</span>}
+          {errors.password && (
+            <span className={styles.error}>Password is required</span>
+          )}
         </div>
         <div className={styles.formGroup}>
-          <input className={styles.button} type="submit" value="Login"/>
+          <input className={styles.button} type="submit" value="Login" />
         </div>
       </form>
     </div>
